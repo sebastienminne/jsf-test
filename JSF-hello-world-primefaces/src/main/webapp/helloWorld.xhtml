@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Hello World</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+
+            <p:panel id="myPanel" header="Hello World (but reload all)">
+                 <p:commandButton value="Show/hide greetings" >
+                      	<f:ajax render="myPanel" listener="#{helloWorld.toggleDisplay()}"/>
+                 </p:commandButton>
+	
+				<h:outputText value="#{helloWorld.showGreeting()}" rendered="#{helloWorld.shouldDisplay()}"></h:outputText>
+            </p:panel>
+
+			<p:panel id="toto" header="Hello World (just a small part)">
+                 <p:commandButton value="Show/hide greetings" >
+                      	<f:ajax render="toto" listener="#{helloWorld.toggleDisplayPart()}"/>
+                 </p:commandButton>
+				Hello 
+				<h:panelGroup id="myPart">
+					<h:outputText value="#{helloWorld.showPart()}" rendered="#{helloWorld.shouldDisplayPart()}"></h:outputText>
+				</h:panelGroup>
+            </p:panel>
+
+
+        </h:form>
+    </h:body>
+</html>
